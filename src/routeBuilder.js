@@ -84,20 +84,20 @@ function generateSavePageCustomDataSettings(customData) {
 
 function getRouteData(key, language) {
   const locale = language.id;
-  const completeTranslations = require(`${language.dataPath}/${locale}`);
+  const completeTranslations = require(path.resolve(`${language.dataPath}/${locale}`));
   const translations = fp.get(key, completeTranslations);
   return {locale, translations};
 }
 
 function getCustomData(config, language) {
   const locale = language.id;
-  const data = require(`${config.dataPath}/${locale}`);
+  const data = require(path.resolve(`${config.dataPath}/${locale}`));
   return {locale, [config.propKey]: data};
 }
 
 function getChildrenData(config, language) {
   const locale = language.id;
-  const data = require(`${config.dataPath}/${locale}`);
+  const data = require(path.resolve(`${config.dataPath}/${locale}`));
   return fp.map(child => {
     return {
       path: `${config.path}/${fp.get(config.urlKeyPath, child)}`,
