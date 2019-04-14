@@ -8,7 +8,7 @@
   "private": false,
   "scripts": {
     "build": "babel src --out-dir . --ignore example",
-    "preversion": "npm run build",
+    "preversion": "yarn build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
