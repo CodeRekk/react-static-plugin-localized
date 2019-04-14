@@ -1,3 +1,4 @@
+import path from 'path';
 import fp from 'lodash/fp';
 
 export function getAllRoutesWithData(config) {
