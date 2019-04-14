@@ -1,0 +1,33 @@
+{
+  "defaultLanguage": "de",
+  "languages": [
+    {
+      "id": "de",
+      "dataPath": "data/locales"
+    },
+    "en"
+  ],
+  "pages": [
+    {
+      "id": "index",
+      "path": "/",
+      "templateFile": "src/pages/index.js",
+      "translationKey": "index"
+    },
+    "about",
+    {
+      "id": "blog",
+      "customData": {
+        "propKey": "posts",
+        "dataPath": "data/blog"
+      },
+      "children": {
+        "path": "/post",
+        "urlKeyPath": "id",
+        "templateFile": "src/containers/Post",
+        "propKey": "post",
+        "dataPath": "data/blog"
+      }
+    }
+  ]
+}
