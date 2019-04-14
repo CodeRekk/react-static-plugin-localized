@@ -3,9 +3,28 @@
   "version": "0.0.1",
   "description": "A React-Static plugin that adds support for creating language specific routes with localized data",
   "main": "node.api.js",
+  "author": "Richard Wohlgemuth <woffrek@outlook.com>",
+  "license": "MIT",
+  "private": false,
   "scripts": {
+    "build": "babel src --out-dir . --ignore example",
+    "preversion": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Richard Wohlgemuth <woffrek@outlook.com>",
-  "license": "MIT"
+  "dependencies": {
+    "lodash": "4.17.11"
+  },
+  "peerDependencies": {
+    "react-static": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
 }
