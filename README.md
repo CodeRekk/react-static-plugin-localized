@@ -8,7 +8,7 @@ This creates Localized Routes with a config-file and data in form of JSON-files.
 In an existing react-static site run:
 
 ```bash
-$ npm i --save react-static-plugin-localized
+$ npm i git+https://github.com/woffrek/react-static-plugin-localized.git
 ```
 
 Then add the plugin to your `static.config.js` with a valid `config` file or object:
