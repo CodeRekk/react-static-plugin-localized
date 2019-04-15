@@ -103,7 +103,7 @@ function getChildrenData(config, language) {
     return {
       path: `${config.path}/${fp.get(config.urlKeyPath, child)}`,
       template: config.templateFile,
-      getData: () => ({[config.propKey]: child})
+      getData: () => ({[config.propKey]: child, locale})
     };
   }, data);
 }
