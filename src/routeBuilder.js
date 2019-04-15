@@ -42,7 +42,7 @@ function generateSavePageSettings(page) {
     return {
       id: page,
       path: `/${page}`,
-      templateFile: `src/pages/${page}.js`,
+      templateFile: `src/pages/${page}`,
       translationKey: page,
       customData: null,
       children: null
@@ -52,7 +52,7 @@ function generateSavePageSettings(page) {
     return {
       id: id,
       path: fp.propOr(`/${id}`, 'path', page),
-      templateFile: fp.propOr(`src/pages/${id}.js`, 'templateFile', page),
+      templateFile: fp.propOr(`src/pages/${id}`, 'templateFile', page),
       translationKey: fp.propOr(id, 'translationKey', page),
       customData: generateSavePageCustomDataSettings(fp.get('customData', page)),
       children: generateSavePageChildrenSettings(fp.get('children', page))
