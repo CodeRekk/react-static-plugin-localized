@@ -108,10 +108,10 @@ function getChildrenData(config, language) {
   }, data);
 }
 
-function getRoutePathWithLanguage(path, language, defaultLanguage) {
+export function getRoutePathWithLanguage(path, language, defaultLanguage) {
   if ( language === defaultLanguage ) {
     return path;
   } else {
-    return `en${path}`;
+    return `${language}${path}`;
   }
 }
