@@ -1,7 +1,11 @@
 {
   "index": {
-    "hero": {
-      "welcome": "Welcome"
-    }
+    "header": "welcome en"
+  },
+  "about": {
+    "header": "about en"
+  },
+  "404": {
+  	"header": "404 en"
   }
 }

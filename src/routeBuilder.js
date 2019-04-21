@@ -23,21 +23,21 @@ export function getAllRoutesWithData(config) {
   }, pages);
 }
 
-function generateSaveLanguageSettings(language) {
+export function generateSaveLanguageSettings(language) {
   if (typeof language === 'string') {
     return {
       id: language,
-      dataPath: 'data/locales/'
+      dataPath: 'data/locales'
     }
   } else {
     return {
       id: fp.get('id', language),
-      dataPath: fp.propOr('data/locales/', 'dataPath', language)
+      dataPath: fp.propOr('data/locales', 'dataPath', language)
     }
   }
 }
 
-function generateSavePageSettings(page) {
+export function generateSavePageSettings(page) {
   if (typeof page === 'string') {
     return {
       id: page,
@@ -60,7 +60,7 @@ function generateSavePageSettings(page) {
   }
 }
 
-function generateSavePageChildrenSettings(children) {
+export function generateSavePageChildrenSettings(children) {
   if (!children) {
     return null;
   }
@@ -73,7 +73,7 @@ function generateSavePageChildrenSettings(children) {
   };
 }
 
-function generateSavePageCustomDataSettings(customData) {
+export function generateSavePageCustomDataSettings(customData) {
   if (!customData) {
     return null;
   }
@@ -83,20 +83,21 @@ function generateSavePageCustomDataSettings(customData) {
   };
 }
 
-function getRouteData(key, language) {
+export function getRouteData(key, language) {
   const locale = language.id;
   const completeTranslations = require(path.resolve(`${language.dataPath}/${locale}`));
   const translations = fp.get(key, completeTranslations);
   return {locale, translations};
 }
 
-function getCustomData(config, language) {
+export function getCustomData(config, language) {
   const locale = language.id;
   const data = require(path.resolve(`${config.dataPath}/${locale}`));
+  // TODO this locale is not needed, since we merge this with RouteData
   return {locale, [config.propKey]: data};
 }
 
-function getChildrenData(config, language) {
+export function getChildrenData(config, language) {
   const locale = language.id;
   const data = require(path.resolve(`${config.dataPath}/${locale}`));
   return fp.map(child => {

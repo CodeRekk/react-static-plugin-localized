@@ -11,23 +11,24 @@
     {
       "id": "index",
       "path": "/",
-      "templateFile": "src/pages/index.js",
+      "templateFile": "src/pages/index",
       "translationKey": "index"
     },
     "about",
     {
-      "id": "blog",
+      "id": "stories",
       "customData": {
         "propKey": "posts",
-        "dataPath": "data/blog"
+        "dataPath": "data/stories"
       },
       "children": {
         "path": "/post",
         "urlKeyPath": "id",
         "templateFile": "src/containers/Post",
         "propKey": "post",
-        "dataPath": "data/blog"
+        "dataPath": "data/stories"
       }
-    }
+    },
+    "404"
   ]
 }
