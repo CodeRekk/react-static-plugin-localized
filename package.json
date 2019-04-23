@@ -1,6 +1,6 @@
 {
   "name": "react-static-plugin-localized",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A React-Static plugin that adds support for creating language specific routes with localized data",
   "main": "node.api.js",
   "author": "Richard Wohlgemuth <woffrek@outlook.com>",
@@ -12,7 +12,7 @@
     "test": "jest",
     "test-watch": "jest --watch",
     "coverage": "jest --coverage",
-    "publish": "npm run build && npm publish"
+    "prepublishOnly": "npm run build && npm publish"
   },
   "dependencies": {
     "lodash": "4.17.11"
