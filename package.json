@@ -11,7 +11,8 @@
     "preversion": "yarn build",
     "test": "jest",
     "test-watch": "jest --watch",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "publish": "npm run build && npm publish"
   },
   "dependencies": {
     "lodash": "4.17.11"
