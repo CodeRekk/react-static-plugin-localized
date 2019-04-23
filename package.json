@@ -8,11 +8,12 @@
   "private": false,
   "scripts": {
     "build": "babel src --out-dir .",
-    "preversion": "yarn build",
+    "clean": "rm -f node.api.js && rm -f routeBuilder.js",
+    "preversion": "npm run clean && npm run test && npm run build",
     "test": "jest",
     "test-watch": "jest --watch",
     "coverage": "jest --coverage",
-    "prepublishOnly": "npm run build && npm publish"
+    "prepublishOnly": "npm run clean && npm run test && npm run build"
   },
   "dependencies": {
     "lodash": "4.17.11"
