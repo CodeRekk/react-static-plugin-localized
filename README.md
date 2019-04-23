@@ -25,3 +25,41 @@ export default {
   ]
 }
 ```
+
+## Example config-file
+```json
+{
+  "defaultLanguage": "de",
+  "languages": [
+    {
+      "id": "de",
+      "dataPath": "data/locales"
+    },
+    "en"
+  ],
+  "pages": [
+    {
+      "id": "index",
+      "path": "/",
+      "templateFile": "src/pages/index",
+      "translationKey": "index"
+    },
+    "about",
+    {
+      "id": "stories",
+      "customData": {
+        "propKey": "posts",
+        "dataPath": "data/stories"
+      },
+      "children": {
+        "path": "/post",
+        "urlKeyPath": "id",
+        "templateFile": "src/containers/Post",
+        "propKey": "post",
+        "dataPath": "data/stories"
+      }
+    },
+    "404"
+  ]
+}
+```
