@@ -97,7 +97,7 @@ Each page has:
   in the `translations`-prop.
 5. `customData` with: `propKey` where it can be read from router (like translations)
   and `dataPath` which has a json-file for every language.
-6. `children` with: `path` as subroute from parten where it can be opened (`parent/child/slug`),
+6. `children` with: `path` as subroute from parent where it can be opened (`parent/child/slug`),
   `urlKeyPath` is the key from the data-file which is used as slug in the route, `templateFile` is the file which will be rendered (like the templateFile of pages), `propKey` is the key on which the data will be given to the Component in the templateFile and `dataPath` like the others where you have to plate a json-file for every language where the plugin reads the data out of
 
 If an page is given as string (here `about` from example above) it will be translated to:
