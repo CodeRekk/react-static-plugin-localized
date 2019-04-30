@@ -65,12 +65,12 @@ export default {
 }
 ```
 
-##Resulting Routes
+## Resulting Routes
 This plugin will build localized routes in following structure:
 1. for all pages in the `defaultLanguage`: `/[pageRoute]` (for example`/about`)
 2. for all pages in not-default-language: `/[language-id]/[pageRoute]` (for example`/en/about`)
 
-##Configuration
+## Configuration
 ### Default-Language Configuration
 The default-Language is simply set with a string such as `de` in the example above.
 
