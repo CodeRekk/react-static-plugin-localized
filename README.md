@@ -152,16 +152,21 @@ The DataFiles are filled with an array this time. (To create a route for every c
 
 ### Reading the Data in your Components
 #### Reading translation/language-Data
-From `useRouteData` you will get the translationData and the current locale.
-The current locale can be used for routing.
+From `useRouteData` you will get the translationData, the current locale and location (for example `/about`).
+The current locale and location can be used for routing.
 You dont have to worry about the language for the texts, you only get the ones for the current language. (This saves data which has to be sent to the client)
 ```jsx harmony
 import { useRouteData } from 'react-static';
 export default () => {
-  const { translations, locale } = useRouteData();
+  const { translations, locale, location } = useRouteData();
+  /*
+    locale for example 'en'
+    location for example '/stories/post/1'
+  */
   return (
     <>
       <p>Current locale: {locale}</p>
+      <p>Current location: {location}</p>
       <h1>Translated header {translations.header}</h1>
     </>
   );

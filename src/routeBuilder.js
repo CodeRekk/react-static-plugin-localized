@@ -14,10 +14,11 @@ export function getAllRoutesWithData(config) {
           const customData = savePage.customData ? getCustomData(savePage.customData, saveLanguage) : null;
           return {
             ...getRouteData(savePage.translationKey, saveLanguage),
-            ...customData
+            ...customData,
+            location: savePage.path
           }
         },
-        children: savePage.children ? getChildrenData(savePage.children, saveLanguage) : null
+        children: savePage.children ? getChildrenData(savePage.children, saveLanguage, savePage.path) : null
       };
     }, languages);
   }, pages);
@@ -93,18 +94,18 @@ export function getRouteData(key, language) {
 export function getCustomData(config, language) {
   const locale = language.id;
   const data = require(path.resolve(`${config.dataPath}/${locale}`));
-  // TODO this locale is not needed, since we merge this with RouteData
-  return {locale, [config.propKey]: data};
+  return {[config.propKey]: data};
 }
 
-export function getChildrenData(config, language) {
+export function getChildrenData(config, language, parentPath) {
   const locale = language.id;
   const data = require(path.resolve(`${config.dataPath}/${locale}`));
   return fp.map(child => {
+    const childPath = `${config.path}/${fp.get(config.urlKeyPath, child)}`;
     return {
-      path: `${config.path}/${fp.get(config.urlKeyPath, child)}`,
+      path: childPath,
       template: config.templateFile,
-      getData: () => ({[config.propKey]: child, locale})
+      getData: () => ({[config.propKey]: child, locale, location: parentPath + childPath})
     };
   }, data);
 }

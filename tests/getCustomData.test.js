@@ -9,12 +9,12 @@ const saveCustomConfig = {
 
 test("getCustomDataDE", () => {
 	expect(getCustomData(saveCustomConfig, {id: "de"})).toEqual(
-    {custom: customDataDE, locale: "de"}
+    {custom: customDataDE}
 	);
 });
 
 test("getCustomDataEN", () => {
   expect(getCustomData(saveCustomConfig, {id: "en"})).toEqual(
-    {custom: customDataEN, locale: "en"}
+    {custom: customDataEN}
   );
 });
