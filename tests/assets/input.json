@@ -1,0 +1,47 @@
+{
+  "defaultLanguage": "de",
+  "languages": [
+    {
+      "id": "de",
+      "dataPath": "example/data/locales"
+    },
+    {
+      "id": "en",
+      "dataPath": "example/data/locales"
+    }
+  ],
+  "pages": [
+    {
+      "id": "index",
+      "path": "/",
+      "templateFile": "src/pages/index",
+      "translationKey": "index"
+    },
+    {
+      "id": "about",
+      "path": "/about",
+      "templateFile": "src/pages/about",
+      "translationKey": "about"
+    },
+    {
+      "id": "stories",
+      "customData": {
+        "propKey": "posts",
+        "dataPath": "example/data/custom"
+      },
+      "children": {
+        "path": "/post",
+        "urlKeyPath": "id",
+        "templateFile": "src/containers/Post",
+        "propKey": "post",
+        "dataPath": "example/data/custom"
+      }
+    },
+    {
+      "id": "404",
+      "path": "/404",
+      "templateFile": "src/pages/404",
+      "translationKey": "404"
+    }
+  ]
+}
