@@ -19,14 +19,14 @@
       "id": "stories",
       "customData": {
         "propKey": "posts",
-        "dataPath": "data/stories"
+        "dataPath": "data/custom"
       },
       "children": {
         "path": "/post",
         "urlKeyPath": "id",
         "templateFile": "src/containers/Post",
         "propKey": "post",
-        "dataPath": "data/stories"
+        "dataPath": "data/custom"
       }
     },
     "404"
