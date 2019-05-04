@@ -2,7 +2,7 @@ import fp from 'lodash/fp';
 import { getAllRoutesWithData } from './routeBuilder';
 
 export default pluginOptions => ({
-  getRoutes: async routes => {
+  getRoutes: async (routes) => {
     const { config } = pluginOptions;
 
     if (!fp.isEmpty(routes)) {
@@ -13,6 +13,6 @@ export default pluginOptions => ({
       return undefined;
     }
 
-    return getAllRoutesWithData(config)
-  }
-})
+    return getAllRoutesWithData(config);
+  },
+});

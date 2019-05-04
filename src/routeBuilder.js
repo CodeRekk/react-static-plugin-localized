@@ -3,9 +3,9 @@ import fp from 'lodash/fp';
 
 export function getAllRoutesWithData(config) {
   const { defaultLanguage, languages, pages } = config;
-  return fp.flatMap(page => {
+  return fp.flatMap((page) => {
     const savePage = generateSavePageSettings(page);
-    return fp.map(language => {
+    return fp.map((language) => {
       const saveLanguage = generateSaveLanguageSettings(language);
       return {
         path: getRoutePathWithLanguage(savePage.path, fp.get('id', saveLanguage), defaultLanguage),
@@ -15,10 +15,10 @@ export function getAllRoutesWithData(config) {
           return {
             ...getRouteData(savePage.translationKey, saveLanguage),
             ...customData,
-            location: savePage.path
-          }
+            location: savePage.path,
+          };
         },
-        children: savePage.children ? getChildrenData(savePage.children, saveLanguage, savePage.path) : null
+        children: savePage.children ? getChildrenData(savePage.children, saveLanguage, savePage.path) : null,
       };
     }, languages);
   }, pages);
@@ -28,14 +28,13 @@ export function generateSaveLanguageSettings(language) {
   if (typeof language === 'string') {
     return {
       id: language,
-      dataPath: 'data/locales'
-    }
-  } else {
-    return {
-      id: fp.get('id', language),
-      dataPath: fp.propOr('data/locales', 'dataPath', language)
-    }
+      dataPath: 'data/locales',
+    };
   }
+  return {
+    id: fp.get('id', language),
+    dataPath: fp.propOr('data/locales', 'dataPath', language),
+  };
 }
 
 export function generateSavePageSettings(page) {
@@ -46,19 +45,18 @@ export function generateSavePageSettings(page) {
       templateFile: `src/pages/${page}`,
       translationKey: page,
       customData: null,
-      children: null
-    };
-  } else {
-    const id = fp.get('id', page);
-    return {
-      id: id,
-      path: fp.propOr(`/${id}`, 'path', page),
-      templateFile: fp.propOr(`src/pages/${id}`, 'templateFile', page),
-      translationKey: fp.propOr(id, 'translationKey', page),
-      customData: generateSavePageCustomDataSettings(fp.get('customData', page)),
-      children: generateSavePageChildrenSettings(fp.get('children', page))
+      children: null,
     };
   }
+  const id = fp.get('id', page);
+  return {
+    id,
+    path: fp.propOr(`/${id}`, 'path', page),
+    templateFile: fp.propOr(`src/pages/${id}`, 'templateFile', page),
+    translationKey: fp.propOr(id, 'translationKey', page),
+    customData: generateSavePageCustomDataSettings(fp.get('customData', page)),
+    children: generateSavePageChildrenSettings(fp.get('children', page)),
+  };
 }
 
 export function generateSavePageChildrenSettings(children) {
@@ -70,7 +68,7 @@ export function generateSavePageChildrenSettings(children) {
     urlKeyPath: fp.propOr('id', 'urlKeyPath', children),
     templateFile: fp.get('templateFile', children),
     propKey: fp.propOr('data', 'propKey', children),
-    dataPath: fp.get('dataPath', children)
+    dataPath: fp.get('dataPath', children),
   };
 }
 
@@ -80,7 +78,7 @@ export function generateSavePageCustomDataSettings(customData) {
   }
   return {
     dataPath: fp.get('dataPath', customData),
-    propKey: fp.propOr('data', 'propKey', customData)
+    propKey: fp.propOr('data', 'propKey', customData),
   };
 }
 
@@ -88,32 +86,31 @@ export function getRouteData(key, language) {
   const locale = language.id;
   const completeTranslations = require(path.resolve(`${language.dataPath}/${locale}`));
   const translations = fp.get(key, completeTranslations);
-  return {locale, translations};
+  return { locale, translations };
 }
 
 export function getCustomData(config, language) {
   const locale = language.id;
   const data = require(path.resolve(`${config.dataPath}/${locale}`));
-  return {[config.propKey]: data};
+  return { [config.propKey]: data };
 }
 
 export function getChildrenData(config, language, parentPath) {
   const locale = language.id;
   const data = require(path.resolve(`${config.dataPath}/${locale}`));
-  return fp.map(child => {
+  return fp.map((child) => {
     const childPath = `${config.path}/${fp.get(config.urlKeyPath, child)}`;
     return {
       path: childPath,
       template: config.templateFile,
-      getData: () => ({[config.propKey]: child, locale, location: parentPath + childPath})
+      getData: () => ({ [config.propKey]: child, locale, location: parentPath + childPath }),
     };
   }, data);
 }
 
 export function getRoutePathWithLanguage(path, language, defaultLanguage) {
-  if ( language === defaultLanguage ) {
+  if (language === defaultLanguage) {
     return path;
-  } else {
-    return `${language}${path}`;
   }
+  return `${language}${path}`;
 }
