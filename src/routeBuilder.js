@@ -1,29 +1,6 @@
 import path from 'path';
 import fp from 'lodash/fp';
 
-export function getAllRoutesWithData(config) {
-  const { defaultLanguage, languages, pages } = config;
-  return fp.flatMap((page) => {
-    const savePage = generateSavePageSettings(page);
-    return fp.map((language) => {
-      const saveLanguage = generateSaveLanguageSettings(language);
-      return {
-        path: getRoutePathWithLanguage(savePage.path, fp.get('id', saveLanguage), defaultLanguage),
-        template: savePage.templateFile,
-        getData: () => {
-          const customData = savePage.customData ? getCustomData(savePage.customData, saveLanguage) : null;
-          return {
-            ...getRouteData(savePage.translationKey, saveLanguage),
-            ...customData,
-            location: savePage.path,
-          };
-        },
-        children: savePage.children ? getChildrenData(savePage.children, saveLanguage, savePage.path) : null,
-      };
-    }, languages);
-  }, pages);
-}
-
 export function generateSaveLanguageSettings(language) {
   if (typeof language === 'string') {
     return {
@@ -34,28 +11,6 @@ export function generateSaveLanguageSettings(language) {
   return {
     id: fp.get('id', language),
     dataPath: fp.propOr('data/locales', 'dataPath', language),
-  };
-}
-
-export function generateSavePageSettings(page) {
-  if (typeof page === 'string') {
-    return {
-      id: page,
-      path: `/${page}`,
-      templateFile: `src/pages/${page}`,
-      translationKey: page,
-      customData: null,
-      children: null,
-    };
-  }
-  const id = fp.get('id', page);
-  return {
-    id,
-    path: fp.propOr(`/${id}`, 'path', page),
-    templateFile: fp.propOr(`src/pages/${id}`, 'templateFile', page),
-    translationKey: fp.propOr(id, 'translationKey', page),
-    customData: generateSavePageCustomDataSettings(fp.get('customData', page)),
-    children: generateSavePageChildrenSettings(fp.get('children', page)),
   };
 }
 
@@ -79,6 +34,28 @@ export function generateSavePageCustomDataSettings(customData) {
   return {
     dataPath: fp.get('dataPath', customData),
     propKey: fp.propOr('data', 'propKey', customData),
+  };
+}
+
+export function generateSavePageSettings(page) {
+  if (typeof page === 'string') {
+    return {
+      id: page,
+      path: `/${page}`,
+      templateFile: `src/pages/${page}`,
+      translationKey: page,
+      customData: null,
+      children: null,
+    };
+  }
+  const id = fp.get('id', page);
+  return {
+    id,
+    path: fp.propOr(`/${id}`, 'path', page),
+    templateFile: fp.propOr(`src/pages/${id}`, 'templateFile', page),
+    translationKey: fp.propOr(id, 'translationKey', page),
+    customData: generateSavePageCustomDataSettings(fp.get('customData', page)),
+    children: generateSavePageChildrenSettings(fp.get('children', page)),
   };
 }
 
@@ -108,9 +85,36 @@ export function getChildrenData(config, language, parentPath) {
   }, data);
 }
 
-export function getRoutePathWithLanguage(path, language, defaultLanguage) {
+export function getRoutePathWithLanguage(location, language, defaultLanguage) {
   if (language === defaultLanguage) {
-    return path;
+    return location;
   }
-  return `${language}${path}`;
+  return `${language}${location}`;
+}
+
+export function getAllRoutesWithData(config) {
+  const { defaultLanguage, languages, pages } = config;
+  return fp.flatMap((page) => {
+    const savePage = generateSavePageSettings(page);
+    return fp.map((language) => {
+      const saveLanguage = generateSaveLanguageSettings(language);
+      return {
+        path: getRoutePathWithLanguage(savePage.path, fp.get('id', saveLanguage), defaultLanguage),
+        template: savePage.templateFile,
+        getData: () => {
+          const customData = savePage.customData
+            ? getCustomData(savePage.customData, saveLanguage)
+            : null;
+          return {
+            ...getRouteData(savePage.translationKey, saveLanguage),
+            ...customData,
+            location: savePage.path,
+          };
+        },
+        children: savePage.children
+          ? getChildrenData(savePage.children, saveLanguage, savePage.path)
+          : null,
+      };
+    }, languages);
+  }, pages);
 }
