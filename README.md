@@ -91,6 +91,7 @@ For the above Example there are 2 files in that folder: `de.json` and `en.json`.
 ### CommonData (since 0.8)
 The data in the given path (given as `string` like in example config above) will be read for each language (like normal translation/page-data `[path]/[languageId].json`) and will be given to every page and their children as a prop with the key `common`.
 This can be used for translations of the header/footer for example.
+BE AWARE! -> here the complete file is given to every page/child!
 
 ### Page Configuration
 Each page has:
