@@ -38,6 +38,7 @@ export default {
     },
     "en"
   ],
+  "commonData": "data/common",
   "pages": [
     {
       "id": "index",
@@ -86,6 +87,10 @@ If an object is given the id is required, but the dataPath is optional.
 
 In the dataPath of language the Plugin will get the file for each given language.
 For the above Example there are 2 files in that folder: `de.json` and `en.json`.
+
+### CommonData (since 0.8)
+The data in the given path (given as `string` like in example config above) will be read for each language (like normal translation/page-data `[path]/[languageId].json`) and will be given to every page and their children as a prop with the key `common`.
+This can be used for translations of the header/footer for example.
 
 ### Page Configuration
 Each page has:
@@ -151,20 +156,22 @@ The DataFiles are filled with an array this time. (To create a route for every c
 ```
 
 ### Reading the Data in your Components
-#### Reading translation/language-Data
+#### Reading translation/language/common-Data
 From `useRouteData` you will get the translationData, the current locale and location (for example `/about`).
 The current locale and location can be used for routing.
 You dont have to worry about the language for the texts, you only get the ones for the current language. (This saves data which has to be sent to the client)
 ```jsx harmony
+import Header from 'Header.jsx';
 import { useRouteData } from 'react-static';
 export default () => {
-  const { translations, locale, location } = useRouteData();
+  const { translations, locale, location, common } = useRouteData();
   /*
     locale for example 'en'
     location for example '/stories/post/1'
   */
   return (
     <>
+      <Header data={common.header} />
       <p>Current locale: {locale}</p>
       <p>Current location: {location}</p>
       <h1>Translated header {translations.header}</h1>

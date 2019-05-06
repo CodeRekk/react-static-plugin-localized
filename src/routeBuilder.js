@@ -72,7 +72,7 @@ export function getCustomData(config, language) {
   return { [config.propKey]: data };
 }
 
-export function getChildrenData(config, language, parentPath) {
+export function getChildrenData(config, language, parentPath, common) {
   const locale = language.id;
   const data = require(path.resolve(`${config.dataPath}/${locale}`));
   return fp.map((child) => {
@@ -80,7 +80,9 @@ export function getChildrenData(config, language, parentPath) {
     return {
       path: childPath,
       template: config.templateFile,
-      getData: () => ({ [config.propKey]: child, locale, location: parentPath + childPath }),
+      getData: () => ({
+        [config.propKey]: child, locale, location: parentPath + childPath, common,
+      }),
     };
   }, data);
 }
@@ -93,27 +95,31 @@ export function getRoutePathWithLanguage(location, language, defaultLanguage) {
 }
 
 export function getAllRoutesWithData(config) {
-  const { defaultLanguage, languages, pages } = config;
+  const {
+    defaultLanguage, languages, pages, commonData,
+  } = config;
   return fp.flatMap((page) => {
     const savePage = generateSavePageSettings(page);
     return fp.map((language) => {
       const saveLanguage = generateSaveLanguageSettings(language);
+      const common = commonData ? require(path.resolve(`${commonData}/${saveLanguage.id}`)) : undefined;
       return {
         path: getRoutePathWithLanguage(savePage.path, fp.get('id', saveLanguage), defaultLanguage),
         template: savePage.templateFile,
         getData: () => {
           const customData = savePage.customData
             ? getCustomData(savePage.customData, saveLanguage)
-            : null;
+            : undefined;
           return {
             ...getRouteData(savePage.translationKey, saveLanguage),
             ...customData,
             location: savePage.path,
+            common,
           };
         },
         children: savePage.children
-          ? getChildrenData(savePage.children, saveLanguage, savePage.path)
-          : null,
+          ? getChildrenData(savePage.children, saveLanguage, savePage.path, common)
+          : undefined,
       };
     }, languages);
   }, pages);

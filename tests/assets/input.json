@@ -10,6 +10,7 @@
       "dataPath": "example/data/locales"
     }
   ],
+  "commonData": "example/data/common",
   "pages": [
     {
       "id": "index",
