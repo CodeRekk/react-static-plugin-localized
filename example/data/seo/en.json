@@ -1,0 +1,14 @@
+{
+  "index": {
+    "title": "index en",
+    "description": "index-page en"
+  },
+  "about": {
+    "title": "about en",
+    "description": "about-page en"
+  },
+  "stories": {
+    "title": "stories en",
+    "description": "stories-page en"
+  }
+}

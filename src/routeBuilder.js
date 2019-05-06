@@ -96,13 +96,14 @@ export function getRoutePathWithLanguage(location, language, defaultLanguage) {
 
 export function getAllRoutesWithData(config) {
   const {
-    defaultLanguage, languages, pages, commonData,
+    defaultLanguage, languages, pages, commonData, seoData,
   } = config;
   return fp.flatMap((page) => {
     const savePage = generateSavePageSettings(page);
     return fp.map((language) => {
       const saveLanguage = generateSaveLanguageSettings(language);
       const common = commonData ? require(path.resolve(`${commonData}/${saveLanguage.id}`)) : undefined;
+      const seo = seoData ? fp.get(savePage.id, require(path.resolve(`${seoData}/${saveLanguage.id}`))) : undefined;
       return {
         path: getRoutePathWithLanguage(savePage.path, fp.get('id', saveLanguage), defaultLanguage),
         template: savePage.templateFile,
@@ -115,6 +116,7 @@ export function getAllRoutesWithData(config) {
             ...customData,
             location: savePage.path,
             common,
+            seo,
           };
         },
         children: savePage.children

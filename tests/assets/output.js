@@ -14,6 +14,10 @@ export default [
           AGB: 'Datenschutz',
         },
       },
+      seo: {
+        title: 'index de',
+        description: 'index-page de',
+      },
     }),
     path: '/',
     template: 'src/pages/index',
@@ -33,13 +37,17 @@ export default [
           AGB: 'AGB',
         },
       },
+      seo: {
+        title: 'index en',
+        description: 'index-page en',
+      },
     }),
     path: 'en/',
     template: 'src/pages/index',
   },
   {
     children: null,
-    getData: () => (({
+    getData: () => ({
       locale: 'de',
       location: '/about',
       translations: { header: 'about de' },
@@ -52,7 +60,11 @@ export default [
           AGB: 'Datenschutz',
         },
       },
-    })),
+      seo: {
+        title: 'about de',
+        description: 'about-page de',
+      },
+    }),
     path: '/about',
     template: 'src/pages/about',
   },
@@ -70,6 +82,10 @@ export default [
         footer: {
           AGB: 'AGB',
         },
+      },
+      seo: {
+        title: 'about en',
+        description: 'about-page en',
       },
     }),
     path: 'en/about',
@@ -128,6 +144,10 @@ export default [
           AGB: 'Datenschutz',
         },
       },
+      seo: {
+        title: 'stories de',
+        description: 'stories-page de',
+      },
     }),
     path: '/stories',
     template: 'src/pages/stories',
@@ -185,6 +205,10 @@ export default [
           AGB: 'AGB',
         },
       },
+      seo: {
+        title: 'stories en',
+        description: 'stories-page en',
+      },
     }),
     path: 'en/stories',
     template: 'src/pages/stories',
@@ -204,6 +228,7 @@ export default [
           AGB: 'Datenschutz',
         },
       },
+      seo: undefined,
     }),
     path: '/404',
     template: 'src/pages/404',
@@ -223,6 +248,7 @@ export default [
           AGB: 'AGB',
         },
       },
+      seo: undefined,
     }),
     path: 'en/404',
     template: 'src/pages/404',

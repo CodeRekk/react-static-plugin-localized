@@ -1,3 +1,4 @@
+
 # react-static-plugin-localized
 
 A Localization-Plugin for [React-Static](https://react-static.js.org).
@@ -39,6 +40,7 @@ export default {
     "en"
   ],
   "commonData": "data/common",
+  "seoData": "data/seo",
   "pages": [
     {
       "id": "index",
@@ -93,6 +95,10 @@ The data in the given path (given as `string` like in example config above) will
 This can be used for translations of the header/footer for example.
 BE AWARE! -> here the complete file is given to every page/child!
 
+### SeoData (since 0.9)
+Works like `CommonData` above but it gives only the data under the key of the page-id (`about` for example) to pages.
+(Children don't this data given to them).
+
 ### Page Configuration
 Each page has:
 1. `id`
@@ -138,7 +144,7 @@ This file should look something like this:
 ```
 The Plugin takes the 'index'-key and will give it to the getRouteData-function at the propKey translations.
 
-#### CustomData- and ChildrenData-Files
+#### ChildrenData-Files
 For `customData` and the data of page-childs you can choose the propKey in which it is given to your template-component.
 The DataFiles are filled with an array this time. (To create a route for every child)
 ```json
@@ -154,6 +160,41 @@ The DataFiles are filled with an array this time. (To create a route for every c
     "body": "post 1 body en"
   }
 ]
+```
+
+#### CustomData and CommonData
+The page (or every page and children in case of `commonData`) will receive the complete file.
+```json
+{
+  "header": {
+    "home": "Start",
+    "about": "Über uns"
+  },
+  "footer": {
+    "AGB": "Datenschutz"
+  }
+}
+
+```
+
+#### SeoData
+Every Page will get the `title` and `description` under their id-key.
+```json
+{
+  "index": {
+    "title": "index en",
+    "description": "index-page en"
+  },
+  "about": {
+    "title": "about en",
+    "description": "about-page en"
+  },
+  "stories": {
+    "title": "stories en",
+    "description": "stories-page en"
+  }
+}
+
 ```
 
 ### Reading the Data in your Components

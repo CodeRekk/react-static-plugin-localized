@@ -8,6 +8,7 @@
     "en"
   ],
   "commonData": "data/common",
+  "seoData": "data/seo",
   "pages": [
     {
       "id": "index",

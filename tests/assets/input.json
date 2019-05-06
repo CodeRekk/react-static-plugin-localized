@@ -11,6 +11,7 @@
     }
   ],
   "commonData": "example/data/common",
+  "seoData": "example/data/seo",
   "pages": [
     {
       "id": "index",
