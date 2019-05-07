@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/woffrek/react-static-plugin-localized/tree/master.svg?style=svg)](https://circleci.com/gh/woffrek/react-static-plugin-localized/tree/master)
 
 # react-static-plugin-localized
 
@@ -91,13 +92,13 @@ In the dataPath of language the Plugin will get the file for each given language
 For the above Example there are 2 files in that folder: `de.json` and `en.json`.
 
 ### CommonData (since 0.8)
-The data in the given path (given as `string` like in example config above) will be read for each language (like normal translation/page-data `[path]/[languageId].json`) and will be given to every page and their children as a prop with the key `common`.
+The data in the given path-string will be read for each language (like normal translation/page-data `[path]/[languageId].json`) and will be given to every page and their children as a prop with the key `common`.
 This can be used for translations of the header/footer for example.
 BE AWARE! -> here the complete file is given to every page/child!
 
 ### SeoData (since 0.9)
 Works like `CommonData` above but it gives only the data under the key of the page-id (`about` for example) to pages.
-(Children don't this data given to them).
+(Children don't get this, their Seo-Info should be placed in their own 'childrenData-Files'/customData).
 
 ### Page Configuration
 Each page has:
