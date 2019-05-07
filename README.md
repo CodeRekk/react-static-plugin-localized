@@ -1,5 +1,6 @@
 [![CircleCI](https://circleci.com/gh/woffrek/react-static-plugin-localized/tree/master.svg?style=svg)](https://circleci.com/gh/woffrek/react-static-plugin-localized/tree/master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6b6914c553ab443796549eb03a040bd9)](https://www.codacy.com/app/woffrek/react-static-plugin-localized?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=woffrek/react-static-plugin-localized&amp;utm_campaign=Badge_Grade)
+[![npm version](https://badge.fury.io/js/react-static-plugin-localized.svg)](https://badge.fury.io/js/react-static-plugin-localized)
 
 # react-static-plugin-localized
 
