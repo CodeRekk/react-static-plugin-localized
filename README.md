@@ -181,7 +181,7 @@ The page (or every page and children in case of `commonData`) will receive the c
 ```
 
 #### SeoData
-Every Page will get the `title` and `description` under their id-key.
+Every Page will get the `title` and `description` under their id-key as the propkey `seo`.
 ```json
 {
   "index": {
@@ -209,13 +209,14 @@ You dont have to worry about the language for the texts, you only get the ones f
 import Header from 'Header.jsx';
 import { useRouteData } from 'react-static';
 export default () => {
-  const { translations, locale, location, common } = useRouteData();
+  const { translations, locale, location, common, seo } = useRouteData();
   /*
     locale for example 'en'
     location for example '/stories/post/1'
   */
   return (
     <>
+      <SeoHelmet data={seo} />
       <Header data={common.header} />
       <p>Current locale: {locale}</p>
       <p>Current location: {location}</p>
