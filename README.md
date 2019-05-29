@@ -19,12 +19,14 @@ $ npm i react-static-plugin-localized
 Then add the plugin to your `static.config.js` with a valid `config` file or object:
 
 ```javascript
+import buildConfig from './build.config';
+
 export default {
   plugins: [
     [
-      'react-static-plugin-localized',
+      require.resolve('react-static-plugin-localized'),
       {
-        config: require('./build.config')
+        config: buildConfig
       }
     ]
   ]
