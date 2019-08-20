@@ -30,7 +30,7 @@
     "eslint": "5.3.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.18.2",
-    "jest": "24.7.1"
+    "jest": "24.9.0"
   },
   "babel": {
     "presets": [
