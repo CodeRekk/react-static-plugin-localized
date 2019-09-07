@@ -1,4 +1,3 @@
-[![CircleCI](https://circleci.com/gh/woffrek/react-static-plugin-localized/tree/master.svg?style=svg)](https://circleci.com/gh/woffrek/react-static-plugin-localized/tree/master)
 [![npm version](https://badge.fury.io/js/react-static-plugin-localized.svg)](https://badge.fury.io/js/react-static-plugin-localized)
 
 # react-static-plugin-localized
