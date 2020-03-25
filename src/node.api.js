@@ -1,7 +1,7 @@
 import fp from 'lodash/fp';
 import { getAllRoutesWithData } from './routeBuilder';
 
-export default pluginOptions => ({
+export default (pluginOptions) => ({
   getRoutes: async (routes) => {
     const { config } = pluginOptions;
 

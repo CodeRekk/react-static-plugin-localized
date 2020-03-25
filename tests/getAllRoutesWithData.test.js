@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { getAllRoutesWithData } from '../src/routeBuilder';
-import Input from './assets/input';
+import Input from './assets/input.json';
 import Output from './assets/output';
 
 const functionResult = getAllRoutesWithData(Input);
