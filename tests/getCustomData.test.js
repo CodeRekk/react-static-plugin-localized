@@ -1,6 +1,6 @@
 import { getCustomData } from '../src/routeBuilder';
-import customDataDE from '../example/data/custom/de';
-import customDataEN from '../example/data/custom/en';
+import customDataDE from '../example/data/custom/de.json';
+import customDataEN from '../example/data/custom/en.json';
 
 const saveCustomConfig = {
   propKey: 'custom',

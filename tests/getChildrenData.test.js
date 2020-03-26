@@ -1,7 +1,7 @@
 import fp from 'lodash/fp';
 import { getChildrenData } from '../src/routeBuilder';
-import childrenDataDE from '../example/data/custom/de';
-import childrenDataEN from '../example/data/custom/en';
+import childrenDataDE from '../example/data/custom/de.json';
+import childrenDataEN from '../example/data/custom/en.json';
 
 const saveChildrenConfig = {
   path: '/post',
