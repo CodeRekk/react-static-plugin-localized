@@ -81,7 +81,7 @@ This plugin will build localized routes in following structure:
 The default-Language is simply set with a string such as `de` in the example above.
 
 ### Language Configuration
-If an language is given as string (here `en` from example above) it will be translated to:
+If a language is given as string (here `en` from example above) it will be translated to:
 ```json
 {
   "id": "en",
@@ -115,7 +115,7 @@ Each page has:
 6. `children` with: `path` as subroute from parent where it can be opened (`parent/child/slug`),
   `urlKeyPath` is the key from the data-file which is used as slug in the route, `templateFile` is the file which will be rendered (like the templateFile of pages), `propKey` is the key on which the data will be given to the Component in the templateFile and `dataPath` like the others where you have to plate a json-file for every language where the plugin reads the data out of
 
-If an page is given as string (here `about` from example above) it will be translated to:
+If a page is given as string (here `about` from example above) it will be translated to:
 ```json
 {
   "id": "about",
@@ -204,8 +204,8 @@ Every Page will get the `title` and `description` under their id-key as the prop
 #### Reading translation/language/common-Data
 From `useRouteData` you will get the translationData, the current locale and location (for example `/about`).
 The current locale and location can be used for routing.
-You dont have to worry about the language for the texts, you only get the ones for the current language. (This saves data which has to be sent to the client)
-```jsx harmony
+You don't have to worry about the language for the texts, you only get the ones for the current language. (This saves data which has to be sent to the client)
+```javascript
 import Header from 'Header.jsx';
 import { useRouteData } from 'react-static';
 export default () => {
@@ -230,7 +230,7 @@ export default () => {
 From `useRouteData` you will get the custom- or children-Data and the current locale.
 You only get the current dataSet in the current language.
 This means if you open `/en/blog/post/1` for example you only get the post with the id `1` in the language `en`.
-```jsx harmony
+```javascript
 import { useRouteData } from 'react-static';
 export default () => {
   const { post, locale } = useRouteData();
