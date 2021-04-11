@@ -1,5 +1,5 @@
 {
-  "name": "@woffrek/react-static-plugin-localized",
+  "name": "react-static-plugin-localized",
   "description": "A React-Static plugin that adds support for creating language specific routes with localized data",
   "main": "node.api.js",
   "author": "Richard Wohlgemuth <woffrek@outlook.com>",
