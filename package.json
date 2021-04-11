@@ -16,9 +16,6 @@
     "preversion": "npm run test",
     "prepublishOnly": "npm run build"
   },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/woffrek/react-static-plugin-localized.git"
