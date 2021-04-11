@@ -1,6 +1,5 @@
 {
-  "name": "react-static-plugin-localized",
-  "version": "0.1.2",
+  "name": "@woffrek/react-static-plugin-localized",
   "description": "A React-Static plugin that adds support for creating language specific routes with localized data",
   "main": "node.api.js",
   "author": "Richard Wohlgemuth <woffrek@outlook.com>",
@@ -16,6 +15,9 @@
     "lint-fix": "eslint --fix {src,tests}{/*,/**/*}.js",
     "preversion": "npm run test",
     "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
   },
   "repository": {
     "type": "git",
