@@ -1,7 +1,7 @@
 name: Node.js Package
 on:
   release:
-    types: [created]
+    types: [published]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,6 +13,6 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
     - run: npm ci
     - run: npm build
-    - run: npm publish
+    - run: npm publish --tag ${{ github.event.release.tag_name }}
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

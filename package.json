@@ -1,6 +1,5 @@
 {
   "name": "react-static-plugin-localized",
-  "version": "0.1.2",
   "description": "A React-Static plugin that adds support for creating language specific routes with localized data",
   "main": "node.api.js",
   "author": "Richard Wohlgemuth <woffrek@outlook.com>",
