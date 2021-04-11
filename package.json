@@ -14,8 +14,12 @@
     "coverage": "jest --coverage",
     "lint": "eslint {src,tests}{/*,/**/*}.js",
     "lint-fix": "eslint --fix {src,tests}{/*,/**/*}.js",
-    "preversion": "npm run clean && npm run test && npm run build",
-    "prepublishOnly": "npm run clean && npm run test && npm run build"
+    "preversion": "npm run test",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woffrek/react-static-plugin-localized.git"
   },
   "dependencies": {
     "lodash": "4.17.19"

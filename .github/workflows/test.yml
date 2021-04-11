@@ -1,5 +1,4 @@
-name: prerelease
-
+name: test
 on:
   pull_request:
     branches:
@@ -7,7 +6,6 @@ on:
   push:
     branches:
       - master
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -19,4 +17,3 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
-      - run: npm run build
